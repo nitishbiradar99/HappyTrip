@@ -1,0 +1,64 @@
+﻿@model HappyTrip.Models.Ticket
+
+@{
+    ViewBag.Title = "DownloadTicket";
+}
+
+<h2>DownloadTicket</h2>
+
+<fieldset>
+    <legend>Ticket</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TicketNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TicketNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FlightNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FlightNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BookingDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BookingDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.JourneyDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.JourneyDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Source)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Source)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Destination)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Destination)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Fare)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Fare)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Download", "Download", new { id=Model.TicketID }) |@Html.ActionLink("View As PDF", "TicketAsPdf", new { id=Model.TicketID })|
+    @Html.ActionLink("Back to List", "Index")|
+</p>

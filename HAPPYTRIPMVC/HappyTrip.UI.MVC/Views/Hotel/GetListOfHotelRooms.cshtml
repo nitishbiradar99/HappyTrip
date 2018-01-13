@@ -1,0 +1,67 @@
+﻿@*@model IEnumerable<HappyTrip.Models.HotelEntity.HotelRoom>*@
+@using PagedList.Mvc;
+@using PagedList;
+
+@model IPagedList<HappyTrip.Models.HotelRoom>
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<br />
+<br />
+<div class="CSSTableGenerator">
+<table>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.First().RoomType.Title)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().Hotel.HotelName)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().CostPerDay)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().NoOfRooms)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().Photo)
+        </td>
+        <td></td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomType.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hotel.HotelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CostPerDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfRooms)
+        </td>
+        <td>
+            @Html.Raw("<img width=\"150\" height=\"150\" src=\"data:image/jpeg;base64,"+ Convert.ToBase64String(item.Photo)+"\"/>")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditHotelRoom", new { id=item.HotelRoomId }) |
+            @*@Html.ActionLink("Details", "DetailsHotelRoom", new { id=item.HotelRoomId })*@ 
+            @Html.ActionLink("Delete", "DeleteHotelRoom", new { id=item.HotelRoomId }, new { onclick = "return confirm('Are you sure you wish to delete this question?');"})
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+<div class=" pages">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "HotelRooms", new { page }))
+</div>

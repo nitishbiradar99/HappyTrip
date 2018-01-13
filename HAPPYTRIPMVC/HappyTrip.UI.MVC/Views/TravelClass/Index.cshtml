@@ -1,0 +1,40 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<HappyTrip.Models.TravelClass>
+
+
+@{
+    ViewBag.Title = "Flight Travel Class";
+}
+
+<br />
+<br />
+<div class="CSSTableGenerator">
+<table>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.First().TravelClassName)
+        </td>
+        <td></td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TravelClassName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TravelClassId }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.TravelClassId }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.TravelClassId })
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+
+<div class=" pages">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "TravelClass", new { page }))
+</div>

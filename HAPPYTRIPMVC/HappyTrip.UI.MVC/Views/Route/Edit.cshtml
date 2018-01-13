@@ -1,0 +1,75 @@
+﻿@model HappyTrip.Models.Route
+
+@{
+    ViewBag.Title = "Edit";
+}
+@*<script src="~/Scripts/jquery-2.1.1.min.js"></script>*@
+<script src="~/Scripts/jquery-2.1.1.js"></script>
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Route</legend>
+
+        @Html.HiddenFor(model => model.RouteID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromCityId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("FromCityId", "--Select City--")
+            
+            @*@Html.EditorFor(model => model.FromCity)*@
+            @Html.ValidationMessageFor(model => model.FromCityId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToCity)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ToCityId", null , new { @disabled = "disabled" })
+            @*@Html.EditorFor(model => model.ToCity)*@
+            @Html.ValidationMessageFor(model => model.ToCityId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DistanceInKms)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DistanceInKms)
+            @Html.ValidationMessageFor(model => model.DistanceInKms)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsActive)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsActive)
+            @Html.ValidationMessageFor(model => model.IsActive)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" class="button-secondary"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script type="text/javascript">
+
+    $('#FromCityId').change(function () {
+        var a= $('option:selected', this).val()
+        $('#ToCityId').removeAttr("disabled");
+        $("#ToCityId option[value='" + a + "']").remove();
+    });
+
+</script>

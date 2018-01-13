@@ -1,0 +1,84 @@
+﻿@model IEnumerable<HappyTrip.Models.HotelRoom>
+
+@{
+    ViewBag.Title = "SearchResult";
+}
+<style type="text/css">
+    table
+    {
+        width:100%;
+    }
+    tr
+    {
+    }
+    .book
+    {
+        border-radius:5px;
+        background-color:#b1ddeb;
+    }
+        .book :hover
+        {
+            background-color:#7887e1;
+        }
+    b
+    {
+        text-anchor:start;
+        text-align:start;
+        color:#c44747;
+    }
+    .tblrow
+    {
+        border-radius:10px;
+        break-after:avoid;
+        background-color:#a4bbc1;
+        background-position-x:center;
+    }
+</style>
+<br />
+<table>
+    @*<tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CostPerDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfRooms)
+        </th>
+        <th></th>
+    </tr>*@
+
+@foreach (var item in Model) {
+    <tr class="tblrow">
+        <td colspan="6">
+            @Html.Raw("<img width=\"150\" height=\"150\" src=\"data:image/jpeg;base64,"+ Convert.ToBase64String(item.Hotel.Photo)+"\"/>")
+        </td>
+        <td>
+         <b>@item.Hotel.HotelName <br /></b>
+            @item.Hotel.Address
+            @item.Hotel.City.CityName <br />
+            @*@item.Hotel.BriefNote*@ 
+            @item.Hotel.ContactNo
+        </td> <td></td>
+        <td>
+            @item.Hotel.BriefNote
+        </td>
+        <td>   
+        </td>
+         <td></td>
+         <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            Cost Per Day <br /> Rs.
+            @item.CostPerDay<br />
+            @Html.ActionLink("Book Hotel", "SearchDetails", new { id=item.Hotel.HotelId })
+        </td>
+    </tr>
+}
+</table>

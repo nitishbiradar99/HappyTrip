@@ -1,0 +1,60 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<HappyTrip.Models.Route>
+
+@{
+    ViewBag.Title = "Route";
+}
+
+<br />
+<br />
+<div class="CSSTableGenerator">
+<table>
+    <tr>
+        <td>
+            From 
+            @*@Html.DisplayNameFor(model => model.FromCity)*@
+        </td>
+        <td>
+            To
+            @*@Html.DisplayNameFor(model => model.ToCity)*@
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().DistanceInKms)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().IsActive)
+        </td>
+        <td></td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.ToCity.CityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FromCity.CityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DistanceInKms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RouteID }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.RouteID }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.RouteID })
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+
+<div class=" pages">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "Route", new { page }))
+</div>

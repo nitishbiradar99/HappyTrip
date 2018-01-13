@@ -1,0 +1,68 @@
+﻿@model HappyTrip.Models.Payment
+
+@{
+    ViewBag.Title = "CreatePayment";
+}
+
+<h2>CreatePayment</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Payment</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CardNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CardNo)
+            @Html.ValidationMessageFor(model => model.CardNo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CardHolderName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CardHolderName)
+            @Html.ValidationMessageFor(model => model.CardHolderName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IssueDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IssueDate)
+            @Html.ValidationMessageFor(model => model.IssueDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExpiryDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ExpiryDate)
+            @Html.ValidationMessageFor(model => model.ExpiryDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CVV)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CVV)
+            @Html.ValidationMessageFor(model => model.CVV)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@TempData["Msg"]

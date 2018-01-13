@@ -1,0 +1,76 @@
+﻿@model IEnumerable<HappyTrip.Models.Booking>
+<h2>Happy Miles</h2>
+@{
+    ViewBag.Title = "Booking Details";
+}
+
+@using (Html.BeginForm("Search"))
+{
+    @Html.TextBox("username")
+    <input type="submit" value="Enter Name" />
+
+
+
+}
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+            &nbsp&nbsp
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingDate)&nbsp&nbsp
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingNo)&nbsp&nbsp
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Remarks)&nbsp&nbsp
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.TotalCost)&nbsp&nbsp
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCanceled)&nbsp&nbsp
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookingNo)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalCost)
+        </td>
+        @if (item.IsCanceled == false)
+        {
+        <td>
+           No
+        </td>
+        }
+        else 
+        {
+            
+          <td>
+            Yes
+        </td>  
+            
+        }
+        
+    </tr>
+}
+
+</table>

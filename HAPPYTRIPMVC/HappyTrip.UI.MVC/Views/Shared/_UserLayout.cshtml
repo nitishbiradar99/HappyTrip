@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>@ViewBag.Title - Happy Trip</title>
+    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
+    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrapp.min.css" rel="stylesheet" />*@
+    <link href="~/Content/custom.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="~/Content/half-slider.css" rel="stylesheet" />
+    <link href="~/Content/simple-sidebar.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="content-wrapper">
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                </div>
+        </div>
+        
+            <a class="navbar-brand" href="/Home/Index/">
+                 <img src="/Content/images/happytriplogo.png" height="automatic" width="automatic" /> 
+            </a>
+        
+        <div class="container">
+            
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                 
+                
+            </div>
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    @*http://localhost:11940/Admin#myCarousel*@
+                    <li>@Html.ActionLink("Home", "Index", "Home")<li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Half Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('/Content/images/pic2.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2></h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('/Content/images/pic3.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2></h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('/Content/images/pic4.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2></h2>
+                </div>
+            </div>
+
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('/Content/images/pic1.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+
+    <!-- Page Content -->
+
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/Admin">
+                        User Dashboard
+                    </a>
+                </li>
+                <li> 
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+                        <i class="fa fa-fw fa-arrows-v"></i>Registration<i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    @*<ul id="demo" class="collapse">
+                        <li>
+                            @Html.ActionLink("Registration", "Create", "UserRegistration")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Login", "Create", "Airline")
+                        </li>
+                    </ul>*@
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#City">
+                        <i class="fa fa-fw fa-arrows-v"></i> Search <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="City" class="collapse">
+                        <li>
+                            @Html.ActionLink(" Search Flight", "BookFlight", "Home")
+                        </li>
+                        <li>
+                            @Html.ActionLink(" Search Hotel", "Index", "HotelBooking")
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li>
+                       <a href="javascript:;" data-toggle="collapse" data-target="#Flight">
+                        <i class="fa fa-fw fa-arrows-v"></i> Flight Tickets <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="Flight" class="collapse">
+                        <li>
+                            @Html.ActionLink("Track Tickets", "TrackTicket", "Ticket")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Cancel Tickets", "CancelTicket", "Ticket")
+                        </li>
+                    </ul>
+                   
+                </li>
+                <li>
+                       <a href="javascript:;" data-toggle="collapse" data-target="#HappyMiles">
+                        <i class="fa fa-fw fa-arrows-v"></i> Happy Miles <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="HappyMiles" class="collapse">
+                        <li>
+                            @Html.ActionLink("HappyMile", "HappyMile", "HappyMiles")
+                        </li>
+                        @*<li>
+                            @Html.ActionLink("Cancel Tickets", "CancelTicket", "Ticket")
+                        </li>*@
+                    </ul>
+                   
+                </li>
+                <li>
+                       <a href="javascript:;" data-toggle="collapse" data-target="#Ticket">
+                        <i class="fa fa-fw fa-arrows-v"></i> Ticket <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="Ticket" class="collapse">
+                        <li>
+                            @Html.ActionLink("Ticket", "Index", "Ticket")
+                        </li>
+                        @*<li>
+                            @Html.ActionLink("Cancel Tickets", "CancelTicket", "Ticket")
+                        </li>*@
+                    </ul>
+                   
+                </li>
+                @*<li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#Route">
+                        <i class="fa fa-fw fa-arrows-v"></i> Route <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="Route" class="collapse">
+                        <li>
+                           @Html.ActionLink("View Route", "Index", "Route")
+                        </li>
+                        <li>
+                           @Html.ActionLink("Create Route", "Create", "Route")
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#Schedule">
+                        <i class="fa fa-fw fa-arrows-v"></i> Schedule <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="Schedule" class="collapse">
+                        <li>
+                           @Html.ActionLink("View Schedule", "Index", "Schedule")
+                        </li>
+                        <li>
+                           @Html.ActionLink("Create Schedule", "Create", "Schedule")
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#State">
+                        <i class="fa fa-fw fa-arrows-v"></i> State <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="State" class="collapse">
+                        <li>
+                           @Html.ActionLink("View State", "Index", "State")
+                        </li>
+                        <li>
+                           @Html.ActionLink("Create State", "Create", "State")
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#Travel">
+                        <i class="fa fa-fw fa-arrows-v"></i> Flight TravelClass <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="Travel" class="collapse">
+                        <li>
+                           @Html.ActionLink("View TravelClass", "Index", "TravelClass")
+                        </li>
+                        <li>
+                           @Html.ActionLink("Create TravelClass", "Create", "TravelClass")
+                        </li>
+                    </ul>
+                </li>*@
+            </ul>
+        </div>
+
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="body">
+                            @RenderSection("featured", required: false)
+                        <section class="content-wrapper main-content clear-fix">
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Dashboard</a>
+                            @RenderBody()
+                        </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <footer>
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <hr>
+                            <hr>
+                            <p>Copyright &copy; Pratian Technologies 2014 All Right Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+        
+
+        
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="~/Scripts/jquery-1.11.0.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+     @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+</body>
+
+</html>

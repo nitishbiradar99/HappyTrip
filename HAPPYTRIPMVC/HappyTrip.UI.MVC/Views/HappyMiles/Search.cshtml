@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Happy Miles";
+}
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<h2>Happy Miles</h2>
+@using (Html.BeginForm("Search"))
+{
+    @Html.TextBox("username")
+   <input type="submit" value="Search" />
+
+    @Ajax.ActionLink("Search","SearchResult",new AjaxOptions
+{
+    HttpMethod="GET",
+    UpdateTargetId="divContact",
+    InsertionMode=InsertionMode.InsertAfter})
+
+
+
+}
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+
+
+
+
+
+    });
+</script>
+<div id="divContact"></div>

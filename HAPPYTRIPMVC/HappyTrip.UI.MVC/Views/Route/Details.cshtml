@@ -1,0 +1,43 @@
+﻿@model HappyTrip.Models.Route
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Route</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FromCity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromCity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ToCity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ToCity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DistanceInKms)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DistanceInKms)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsActive)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsActive)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RouteID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

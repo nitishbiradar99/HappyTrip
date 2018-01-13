@@ -1,0 +1,53 @@
+﻿@model HappyTrip.Models.Airline
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm("Create", "Airline", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Add New Airline</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AirlineName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AirlineName)
+            @Html.ValidationMessageFor(model => model.AirlineName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Code)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Code)
+            @Html.ValidationMessageFor(model => model.Code)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Logo)
+        </div>
+        <div class="editor-field">
+            <input type="file" name="file"/>
+            @*@Html.EditorFor(model => model.Logo)*@
+            @Html.ValidationMessageFor(model => model.Logo)
+        </div>
+        <br />
+        <br />
+        <p>
+            <input type="submit" value="Create" class="button-secondary"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,98 @@
+﻿@*@model IEnumerable<HappyTrip.Models.HotelEntity.Hotel>*@
+@using PagedList.Mvc;
+@using PagedList;
+
+@model IPagedList<HappyTrip.Models.Hotel>
+@{
+    ViewBag.Title = "Index";
+}
+@*<link href="~/Content/IndexHotel.css" rel="stylesheet" />*@
+@*<script src="~/Scripts/jquery-2.1.1.js"></script>*@
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+    <br />
+    <br />
+<div class="CSSTableGenerator">
+<table>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.First().HotelName)
+        </td>
+
+        <td>
+            @Html.DisplayNameFor(model => model.First().BriefNote)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().StarRanking)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().Address)
+        </td>
+       @* <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pincode)
+        </th>*@
+       @* <td>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </td>*@
+        <td>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().WebsiteURL)
+        </td>
+        <td>
+           @Html.DisplayNameFor(model => model.First().Photo)
+        </td>
+        <td>
+
+        </td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.BriefNote)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StarRanking)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)<br />
+            City :@Html.DisplayFor(modelItem => item.City.CityName)<br />
+            Pincode: @Html.DisplayFor(modelItem => item.Pincode)<br />
+       @* </td>
+        <td>*@
+            Contact No :@Html.DisplayFor(modelItem => item.ContactNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WebsiteURL)
+        </td>
+        <td>
+            <div class="image">
+            @Html.Raw("<img width=\"150\" height=\"150\" src=\"data:image/jpeg;base64,"+ Convert.ToBase64String(item.Photo)+"\"/>")
+            @*@Html.DisplayFor(modelItem => item.Photo)*@
+            </div>
+        </td>
+       <td>
+            @Html.ActionLink("Edit", "EditHotel", new { id = item.HotelId }) <br />
+            @*@Html.ActionLink("Details", "DetailsOfHotel", new { id=item.HotelId })*@
+            @Html.ActionLink("Delete", "DeleteHotel", new { id=item.HotelId } , new { onclick = "return confirm('Are you sure you wish to delete this question?');"})
+        </td>
+    </tr>
+}
+</table>
+</div>
+<div class=" pages">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "Hotel", new { page }))
+</div>

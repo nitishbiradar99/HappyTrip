@@ -1,0 +1,115 @@
+﻿.float-right {
+    float: right;
+}
+
+#login {
+    display: block;
+    font-size: .85em;
+    margin: 0 0 10px;
+    text-align: right;
+}
+
+    #login a {
+        background-color: #d3dce0;
+        margin-left: 10px;
+        margin-right: 3px;
+        padding: 2px 3px;
+        text-decoration: none;
+    }
+
+    #login a.username {
+        background: none;
+        margin: 0;
+        padding: 0;
+        text-decoration: underline;
+    }
+
+    #login ul {
+        margin: 0;
+    }
+
+    #login li {
+        display: inline;
+        list-style: none;
+    }
+
+.content-wrapper {
+        padding-right: 10px;
+        padding-left: 10px;
+        margin: 0 auto;
+    max-width: 960px;
+    }
+
+.site-title {
+    color: #c8c8c8;
+    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+    font-size: 2.3em;
+    margin: 0;
+}
+
+.site-title a, .site-title a:hover, .site-title a:active {
+    background: none;
+    color: #c8c8c8;
+    outline: none;
+    text-decoration: none;
+}
+
+.float-left {
+    float: left;
+}
+
+
+input, textarea, keygen, select, button {
+margin: 0em;
+font: -webkit-small-control;
+color: initial;
+letter-spacing: normal;
+word-spacing: normal;
+text-transform: none;
+text-indent: 0px;
+text-shadow: none;
+display: inline-block;
+text-align: start;
+}
+
+select {
+-webkit-appearance: menulist;
+box-sizing: border-box;
+align-items: center;
+border: 1px solid;
+border-image-source: initial;
+border-image-slice: initial;
+border-image-width: initial;
+border-image-outset: initial;
+border-image-repeat: initial;
+white-space: pre;
+-webkit-rtl-ordering: logical;
+color: black;
+background-color: white;
+cursor: default;
+
+}
+
+
+button,input,select,textarea{margin:0;font-size:100%;vertical-align:middle}
+label,select,button,input[type="button"],input[type="reset"],input[type="submit"],input[type="radio"],input[type="checkbox"]
+    {cursor:pointer}
+select,textarea,input[type="text"],input[type="password"],input[type="datetime"],input[type="datetime-local"],input[type="date"],input[type="month"],input[type="time"],input[type="week"],input[type="number"],input[type="email"],input[type="url"],input[type="search"],input[type="tel"],input[type="color"],.uneditable-input
+{
+    min-width : 15em;
+    display:inline-block;
+    height:30px;
+    padding:4px 6px;
+    margin-bottom:10px;
+    font-size:14px;
+    line-height:20px;
+    color:#555;
+    vertical-align:middle;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px
+
+}
+select,input[type="file"]{height:30px;*margin-top:4px;line-height:30px}
+
+img{width:auto\9;height:auto;max-width:100%;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic}

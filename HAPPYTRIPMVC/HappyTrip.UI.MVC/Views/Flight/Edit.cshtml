@@ -1,0 +1,82 @@
+﻿@model HappyTrip.Models.Flight
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<br />
+<br />
+
+<p><b>@ViewBag.Message</b></p>
+
+<br />
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+<fieldset>
+        <legend>Edit Flight Details</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.FlightID)
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AirlineId)
+        </div>
+        <div class="editor-field">
+            
+            @Html.DropDownList("AirlineId", "--Select Airline--");
+            @*@Html.EditorFor(model => model.AirlineId)*@
+            @Html.ValidationMessageFor(model => model.AirlineId)
+        </div>
+        
+        <table style="text-align:center">
+            <tr>
+                <td>  Class </td>
+                <td> Seat </td>
+            </tr>
+            
+            @foreach (HappyTrip.Models.TravelClass a in ViewBag.TravelClass)
+            {
+                <tr>
+                    <td>
+                        @a.TravelClassName
+                    </td>
+                    <td>
+                        @foreach (HappyTrip.Models.FlightClass b in ViewBag.FlightClass)
+	                    {
+                            if(Model.FlightID == b.FlightId &&a.TravelClassId==b.TravelClassId)
+                            {
+		                        <text>: <input type="number" min="0" name="@a.TravelClassId" value="@b.NoOfSeats"/></text>
+                                <input type="hidden" name="@b.TravelClass.TravelClassName" value="@b.FlightClassId" />
+                            }
+                        }
+                        @*@Html.EditorFor(yb => a.TravelClassId)*@
+                       
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <br />
+        <br />
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

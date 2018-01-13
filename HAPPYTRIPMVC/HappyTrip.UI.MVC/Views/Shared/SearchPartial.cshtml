@@ -1,0 +1,249 @@
+﻿@model IEnumerable<HappyTrip.Models.Schedule>
+
+@{
+    ViewBag.Title = "FlightSearch";
+}
+
+@using (Html.BeginForm("BookFlight", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <h4>Direct Flights</h4>
+    <div class="CSSTableGenerator">
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayName("Flight Name")
+            </td>
+
+            <td>
+                @Html.DisplayName("Airline")
+            </td>
+            <td>
+                @Html.DisplayName("From")
+            </td>
+
+            <td>
+                @Html.DisplayName("To")
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.DepartureTime)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.ArrivalTime)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.DurationInMins)
+            </td>
+            <td>
+                @Html.DisplayName("Cost Per Ticket")
+            </td>
+            <td>
+            
+            </td>
+       
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.Name)
+            </td>
+
+                <td> 
+                <img src="~/@item.Flight.Airline.Logo" alt="@item.Flight.Airline.AirlineName" height="60px" width="100px" />
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Route.FromCity.CityName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Route.ToCity.CityName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DurationInMins)
+            </td>
+
+            <td>
+                @foreach (var x in item.flightCosts)
+                {
+                    <p>@Html.DisplayFor(a => x.TravelClass.TravelClassName) : @Html.DisplayFor(a => x.CostPerTicket)</p>
+                    @*<input type="hidden" name="FlightCostHdn" value="@x.CostPerTicket" />*@
+                }
+            </td>
+
+            <td>
+                <input type="radio" name="FlightId" value=@item.FlightID /> Book Flight
+                
+            </td>
+       
+            </tr>
+    }
+
+    </table>
+
+    </div>
+
+    <br />
+    <br />
+    <h4>Connected Flights</h4>
+    <div class="CSSTableGenerator">
+    <table>
+        <tr>
+
+            <td>
+                @Html.DisplayName("Flight Name")
+            </td>
+
+            <td>
+                @Html.DisplayName("Airline")
+            </td>
+
+            <td>
+                @Html.DisplayName("From")
+            </td>
+
+            <td>
+                @Html.DisplayName("To")
+            </td>
+
+            <td>
+                @Html.DisplayNameFor(model => model.DepartureTime)
+            </td>
+
+            <td>
+                @Html.DisplayNameFor(model => model.ArrivalTime)
+            </td>
+
+            <td>
+                @Html.DisplayNameFor(model => model.DurationInMins)
+            </td>
+
+            <td>
+                @Html.DisplayName("Cost per ticket")
+            </td>
+
+            <td>
+            
+            </td>
+
+        </tr>
+
+    @foreach (HappyTrip.Models.Schedule item in ViewBag.ConnectedSchedule)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Flight.Name)
+            </td>
+
+            <td> 
+                <img src="~/@item.Flight.Airline.Logo" alt="@item.Flight.Airline.AirlineName" height="60px" width="100px" />
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Route.FromCity.CityName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Route.ToCity.CityName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalTime)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DurationInMins)
+            </td>
+
+            <td></td>
+            <td></td>
+       
+        </tr>
+        foreach (HappyTrip.Models.Schedule a in ViewBag.ConnectedToSch)
+        {
+            if(item.Route.ToCity == a.Route.FromCity)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modela => a.Flight.Name)
+                    </td>
+
+                    <td> 
+                        <img src="~/@a.Flight.Airline.Logo" alt="@a.Flight.Airline.AirlineName" height="60px" width="100px" />
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modela => a.Route.FromCity.CityName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modela => a.Route.ToCity.CityName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modela => a.DepartureTime)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modela => a.ArrivalTime)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modela => a.DurationInMins)
+                    </td>
+
+                    <td>
+                        @{
+                            decimal businessCost = 0;
+                            decimal economyCost = 0;
+                            }
+                            @foreach (var y in item.flightCosts)
+                            {
+                                if(y.TravelClass.TravelClassName == "Business")
+                                {
+                                businessCost  += y.CostPerTicket;
+                                }
+                                economyCost += y.CostPerTicket;
+                      
+                            }
+                        Business :@businessCost <br />
+                        Economy :  @economyCost
+
+                    </td>
+
+                    <td>
+                        <input type="radio" name="FlightId" value="@item.FlightID" /> Select Flight
+                        <input type="hidden" name="ConnectedFlightId" value="@a.FlightID" />
+                        
+                    </td>
+
+                </tr>
+            }
+        }
+    }
+
+    </table>
+
+    </div>
+    <br />
+    <br />
+    <p>
+        <input type ="submit" name="submit" value="Book Flight" class="button-secondary" />
+    </p>
+}

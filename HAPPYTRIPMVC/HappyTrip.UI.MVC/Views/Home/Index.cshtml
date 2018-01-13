@@ -1,0 +1,300 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h3>Search for Flight</h3>
+            </hgroup>
+        </div>
+    </section>
+}
+
+    <script src="~/Content/External/CustomeJS.js">
+
+    </script>
+
+    <script src="~/Scripts/Custome/JavaScript1.js">
+
+    </script>
+
+    <script src="~/Scripts/jquery-2.1.1.min.js">
+
+    </script>
+
+    <link href="~/Scripts/Custome/jquery-ui.css" rel="stylesheet" />
+
+    @*<script src="~/Scripts/Custome/External/jquery.js"></script>*@
+
+    <script src="~/Scripts/Custome/jquery-ui.js">
+
+    </script>
+
+    <script src="~/Scripts/jquery.ui.datepicker.validation.js">
+
+    </script>
+
+@*<h4>Search for Flight</h4>*@
+
+<div id="errordiv">
+    Please fill all details
+</div>
+<div id="flightSearchTable">
+<table>
+    <tr>
+        <td colspan="2">
+            <input type="radio" name="selection" id="oneway" /> One Way &nbsp;&nbsp;&nbsp;
+            <input type="radio" name="selection" id="return" /> Return Journey
+            <br /> 
+            <br /> 
+        </td>
+
+        <td>
+            <br /> 
+            <br /> 
+        </td>
+    </tr>
+
+    <tr>
+        <br />
+        <td>
+            From City  &nbsp; &nbsp;&nbsp;: &nbsp;&nbsp;
+            <br />
+            <br />
+        </td>
+
+        <td>
+            @Html.DropDownList("FromCityId", "--Select City--")
+            <br />
+            <br />
+        </td>
+
+        <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;To City : @Html.DropDownList("ToCityId", null ,"--Select City--", new { @disabled = "disabled" })
+            <br />
+            <br />
+        </td>
+    </tr>
+
+    <tr>
+        <br />
+        <br />
+        <td>
+            Depart Date :  
+            <br />
+            <br />
+        </td>
+
+        <td>
+            <span id="departDatePicker">
+                <input type="text" id="DepartDate" style="width:90px;" placeholder="Deaprt Date" /> 
+            </span>
+            <br />
+            <br />
+        </td>
+
+        <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <span id="returnDatePicker"> Return Date : 
+                <input type="text" id="ReturnDate" style="width:90px;" placeholder="Return Date" disabled="disabled"/>
+            </span> 
+            <br />
+            <br />
+        </td>
+    </tr>
+
+    <tr>
+        <br />
+        <td colspan="2">
+            No. of Tickets
+            <br />
+
+            @Html.DropDownList("NoOfPeople", null, " ", new { @disabled="disabled"})
+            <br />
+            <br />
+        </td>
+
+        <td>
+            
+        </td>
+
+    </tr>
+
+    <tr>
+    <br />
+        <td colspan="2">
+            Class of Travel
+            <br />
+            @Html.DropDownList("TravelClass", null, "--Select Class--", new { @disabled="disabled"})
+            <br />
+            <br />
+        </td>
+
+        <td>
+            
+        </td>
+    </tr>
+ </table>
+
+    <input type="button" id="flightBtn"  value="Search Flight" class="button-secondary" disabled="disabled"/>
+
+</div>
+
+<br />
+<br />
+<div id="ModifySearch">
+    <input type="button" id="flightScheduleBtn" value="Modify Search" class="button-secondary" />
+</div>
+<br />
+<br />
+<div id="flightList">
+    <div id="flightListTable">
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var tocityid;
+    var fromcityid;
+    var fromdate;
+    var todate;
+    var noofpeople;
+    var travelclass;
+
+    $(document).ready(function () {
+        $('#returnDatePicker').fadeOut(0);
+        $("#ModifySearch").fadeOut(0);
+        $("#flightListTable").fadeOut(0);
+        $("#errordiv").fadeOut(0);
+    });
+
+    $("#DepartDate").change(function () {
+        fromdate = $("#DepartDate").val().trim();
+        if (fromdate = "") {
+            $("#NoOfPeople").attr(disabled, "disabled");
+        }
+        else {
+            $("#NoOfPeople").removeAttr("disabled");
+        }
+    });
+
+    $("#NoOfPeople").change(function () {
+        noofpeople = $("#NoOfPeople").val().trim();
+        if (noofpeople = "") {
+            $("#TravelClass").attr(disabled, "disabled");
+        }
+        else {
+            $("#TravelClass").removeAttr("disabled")
+        }
+    });
+
+    $("#TravelClass").change(function () {
+        travelclass = $("#TravelClass").val().trim();
+        if (travelclass = "") {
+            $("#flightBtn").attr(disabled, "disabled");
+        }
+        else {
+            $("#flightBtn").removeAttr("disabled")
+        }
+    });
+
+    $("#flightBtn").click(function () {
+
+        fromcityid = $("#FromCityId").val().trim();
+        tocityid = $("#ToCityId").val().trim();
+        travelclass = $("#TravelClass").val().trim();
+        noofpeople = $("#NoOfPeople").val().trim();
+        fromdate = $("#DepartDate").val().trim();
+
+        $("#flightSearchTable").fadeOut(0);
+
+        if ($("#oneway").is(":checked")) {
+            getFlightDetails();
+        }
+        else if ($("#return").is(":checked")) {
+            getReturnFlightDetails();
+        }
+        $("#ModifySearch").fadeIn();
+        $("#flightListTable").fadeIn();
+        //alert('hi');
+    });
+
+    function getFlightDetails() {
+        $.ajax({
+            url: "/Home/FlightSearch",
+            type: 'Get',
+            data: { fromcity: fromcityid, tocity: tocityid, fromDate: fromdate, noofPeople: noofpeople, travelClass: travelclass },
+            success: function (data) {
+                $("#flightListTable").empty().append(data);
+            },
+            error: function () {
+                $("#errordiv").fadeIn();
+                //alert("hi");
+            }
+        });
+    }
+
+    function getReturnFlightDetails() {
+        $.ajax({
+            url: "/Home/ReturnFlightSearch",
+            type: 'Get',
+            data: { fromcity: fromcityid, tocity: tocityid, fromdate: fromDate, todate: toDate, noofpeople: noofPeople, travelclass: travelClass },
+            success: function (data) {
+                $("#flightListTable").empty().append(data);
+            },
+            error: function () {
+                $("#errordiv").fadeIn();
+            }
+        });
+    }
+
+    $('#return').change(function () {
+        $('#returnDatePicker').fadeIn(0);
+    });
+
+    $('#oneway').change(function () {
+        $('#returnDatePicker').fadeOut(0);
+    });
+
+    $("#flightScheduleBtn").click(function () {
+        $("#ModifySearch").fadeOut(0);
+        $("#flightSearchTable").fadeIn();
+        $("#flightListTable").empty().fadeOut();
+    });
+
+    $('#FromCityId').change(function () {
+        var a = $('option:selected', this).val()
+        $('#ToCityId').removeAttr("disabled");
+        $("#ToCityId option[value='" + a + "']").remove();
+        //$("#DepartDate").datepicker("option", "showAnim", $(this).val());
+    });
+
+    $('#DepartDate').datepicker({
+        minDate: 0,
+        maxDate: "+90D",
+        numberOfMonths: 1,
+        OnSelect: function (selected) {
+            $('#ReturnDate').datepicker("option", "minDate", selected)
+            DepartDate = $('#DepartDate').val();
+        }
+    });
+
+    $('#DepartDate').change(function () {
+        $('#ReturnDate').removeAttr("disabled");
+        date = $("#DepartDate").val();
+        //getReturnDate();
+    });
+
+    $('#ReturnDate').datepicker({
+        minDate: 0,
+        maxDate: "+90D",
+        numberOfMonths: 1,
+        OnSelect: function (selected) {
+            $('#DepartDate').datepicker("option", "maxDate", selected)
+            ReturnDate = $('#ReturnDate').val();
+        }
+    });
+
+</script>

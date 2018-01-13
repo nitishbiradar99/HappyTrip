@@ -1,0 +1,68 @@
+﻿@model IEnumerable<HappyTrip.Models.Ticket>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JourneyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Source)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fare)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JourneyDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Source)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fare)
+        </td>
+        <td>
+            @Html.ActionLink("DownloadTicket", "DownloadTicket", new { id=item.TicketID }) |
+            
+        </td>
+    </tr>
+}
+
+</table>

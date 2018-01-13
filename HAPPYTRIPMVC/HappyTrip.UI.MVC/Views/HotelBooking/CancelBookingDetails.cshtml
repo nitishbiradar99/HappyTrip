@@ -1,0 +1,60 @@
+﻿@model HappyTrip.Models.HotelBooking
+
+@{
+    ViewBag.Title = "CancelBookingDetails";
+}
+
+<h2> Cancel Hotel Booking </h2>
+
+<fieldset>
+    <legend>HotelBooking</legend>
+    @Html.HiddenFor(model => model.BookingId)
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HotelBookingContacts.ContactName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HotelBookingContacts.ContactName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SearchInfos.CheckInDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SearchInfos.CheckInDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SearchInfos.CheckOutDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SearchInfos.CheckOutDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BookingDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BookingDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TotalCost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TotalCost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsCanceled)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsCanceled)
+    </div>
+</fieldset>
+@Html.ActionLink("Confirm Cancel", "ConfirmCancel", new {id =Model.BookingId })
+@Html.ActionLink("Back To Home","Index","HotelBooking")
+
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.BookingId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

@@ -1,0 +1,73 @@
+﻿@model HappyTrip.Models.Route
+
+@{
+    ViewBag.Title = "Create";
+}
+<script src="~/Scripts/jquery-2.1.1.js"></script>
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Route</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromCity)
+        </div>
+        
+        <div class="editor-field">
+            @Html.DropDownList("FromCityId", "--Select City--")
+            
+            @*@Html.EditorFor(model => model.FromCity)*@
+            @Html.ValidationMessageFor(model => model.FromCity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToCity)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ToCityId", null, "--Select City--",  new { @disabled = "disabled" })
+            
+            @*@Html.EditorFor(model => model.ToCity)*@
+            @Html.ValidationMessageFor(model => model.ToCity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DistanceInKms)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DistanceInKms)
+            @Html.ValidationMessageFor(model => model.DistanceInKms)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsActive)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsActive)
+            @Html.ValidationMessageFor(model => model.IsActive)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" class="button-secondary"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript">
+
+    $('#FromCityId').change(function () {
+        var a = $('option:selected', this).val()
+        $('#ToCityId').removeAttr("disabled");
+        $("#ToCityId option[value='" + a + "']").remove();
+    });
+
+</script>

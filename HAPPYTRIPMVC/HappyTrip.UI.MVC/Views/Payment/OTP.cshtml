@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "OTP";
+}
+
+<h2>OTP</h2>
+
+@using (Html.BeginForm("ValidateOTP","Payment"))
+{
+    @Html.TextBox("OTP");
+    <input type="submit" value="Validate" />
+    @Html.ActionLink("Resend OTP","","");
+}
+
+@TempData["Msg"]

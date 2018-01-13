@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyTrip.UI.MVC", "HappyTrip.UI.MVC\HappyTrip.UI.MVC.csproj", "{A346B7C1-1242-488B-ABDD-C20F49002C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyTrip.Data.Repository", "HappyTrip.Data.Repository\HappyTrip.Data.Repository.csproj", "{AC14F221-C052-4F5A-BB63-BD0BA9CB4099}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyTrip.Data.EFRepository", "HappyTrip.Data.EFRepository\HappyTrip.Data.EFRepository.csproj", "{AF280D37-635E-49DD-A4F2-B73FCBCF2A3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyTrip.Business", "HappyTrip.Business\HappyTrip.Business.csproj", "{43CDAA46-47AB-4D71-917D-851ECFE9B39C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyTrip.Models", "HappyTrip.Models\HappyTrip.Models.csproj", "{4FEF30A7-D9BF-4AFD-BD1D-5AB065257963}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappyTrip.Exceptions", "HappyTrip.Exceptions\HappyTrip.Exceptions.csproj", "{38746ED0-C9EE-46CA-B0DA-AD9690ED31BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{50348CED-16D5-4C78-9C6D-FF29ACBB00C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLayer", "BusinessLayer", "{4B3EFE97-29FE-4C55-97B2-FC737EFBF87B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Repository", "Data Repository", "{159522AD-FF34-449C-82D1-6D58A2DA57B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{37259BF1-C37E-40F0-83E1-B949A9CC23B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A346B7C1-1242-488B-ABDD-C20F49002C1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A346B7C1-1242-488B-ABDD-C20F49002C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A346B7C1-1242-488B-ABDD-C20F49002C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A346B7C1-1242-488B-ABDD-C20F49002C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC14F221-C052-4F5A-BB63-BD0BA9CB4099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC14F221-C052-4F5A-BB63-BD0BA9CB4099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC14F221-C052-4F5A-BB63-BD0BA9CB4099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC14F221-C052-4F5A-BB63-BD0BA9CB4099}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF280D37-635E-49DD-A4F2-B73FCBCF2A3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF280D37-635E-49DD-A4F2-B73FCBCF2A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF280D37-635E-49DD-A4F2-B73FCBCF2A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF280D37-635E-49DD-A4F2-B73FCBCF2A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43CDAA46-47AB-4D71-917D-851ECFE9B39C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43CDAA46-47AB-4D71-917D-851ECFE9B39C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43CDAA46-47AB-4D71-917D-851ECFE9B39C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43CDAA46-47AB-4D71-917D-851ECFE9B39C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FEF30A7-D9BF-4AFD-BD1D-5AB065257963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FEF30A7-D9BF-4AFD-BD1D-5AB065257963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FEF30A7-D9BF-4AFD-BD1D-5AB065257963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FEF30A7-D9BF-4AFD-BD1D-5AB065257963}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38746ED0-C9EE-46CA-B0DA-AD9690ED31BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38746ED0-C9EE-46CA-B0DA-AD9690ED31BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38746ED0-C9EE-46CA-B0DA-AD9690ED31BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38746ED0-C9EE-46CA-B0DA-AD9690ED31BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4FEF30A7-D9BF-4AFD-BD1D-5AB065257963} = {50348CED-16D5-4C78-9C6D-FF29ACBB00C2}
+		{38746ED0-C9EE-46CA-B0DA-AD9690ED31BF} = {50348CED-16D5-4C78-9C6D-FF29ACBB00C2}
+		{43CDAA46-47AB-4D71-917D-851ECFE9B39C} = {4B3EFE97-29FE-4C55-97B2-FC737EFBF87B}
+		{AF280D37-635E-49DD-A4F2-B73FCBCF2A3B} = {159522AD-FF34-449C-82D1-6D58A2DA57B1}
+		{AC14F221-C052-4F5A-BB63-BD0BA9CB4099} = {159522AD-FF34-449C-82D1-6D58A2DA57B1}
+		{A346B7C1-1242-488B-ABDD-C20F49002C1C} = {37259BF1-C37E-40F0-83E1-B949A9CC23B6}
+	EndGlobalSection
+EndGlobal

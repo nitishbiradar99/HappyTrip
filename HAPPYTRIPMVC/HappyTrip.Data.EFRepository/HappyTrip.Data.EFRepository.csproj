@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF280D37-635E-49DD-A4F2-B73FCBCF2A3B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HappyTrip.Data.EFRepository</RootNamespace>
+    <AssemblyName>HappyTrip.Data.EFRepository</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Final Apps\BookAppMVC\BookAppMVC\bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AirlineEFRepository.cs" />
+    <Compile Include="BookingContactEFRepository.cs" />
+    <Compile Include="BookingEFRepository.cs" />
+    <Compile Include="BookingHotelEFRepository.cs" />
+    <Compile Include="CityEFRepository.cs" />
+    <Compile Include="EFUnitOfWork.cs" />
+    <Compile Include="FlightClassEFRepository.cs" />
+    <Compile Include="FlightCostEFRepository.cs" />
+    <Compile Include="FlightEFRepository.cs" />
+    <Compile Include="GenericEFRepository.cs" />
+    <Compile Include="GenericRepository.cs" />
+    <Compile Include="HappyTripDBCon.cs" />
+    <Compile Include="HappyTripDBEntity.cs" />
+    <Compile Include="HotelEFRepository.cs" />
+    <Compile Include="HotelRoomEFRepository.cs" />
+    <Compile Include="Migrations\201411070532069_n.cs" />
+    <Compile Include="Migrations\201411070532069_n.Designer.cs">
+      <DependentUpon>201411070532069_n.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411261316084_e.cs" />
+    <Compile Include="Migrations\201411261316084_e.Designer.cs">
+      <DependentUpon>201411261316084_e.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411271453026_f.cs" />
+    <Compile Include="Migrations\201411271453026_f.Designer.cs">
+      <DependentUpon>201411271453026_f.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PassengerEFRepository.cs" />
+    <Compile Include="PaymentEFRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomTypeEFRepository.cs" />
+    <Compile Include="RouteEFRepository.cs" />
+    <Compile Include="ScheduleEFRepositry.cs" />
+    <Compile Include="SpecialScheduleRepositry.cs" />
+    <Compile Include="StateEFRepository.cs" />
+    <Compile Include="TicketEFRepository.cs" />
+    <Compile Include="TravelClassEFRepository.cs" />
+    <Compile Include="UserAcountEFRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HappyTrip.Data.Repository\HappyTrip.Data.Repository.csproj">
+      <Project>{ac14f221-c052-4f5a-bb63-bd0ba9cb4099}</Project>
+      <Name>HappyTrip.Data.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HappyTrip.Models\HappyTrip.Models.csproj">
+      <Project>{4fef30a7-d9bf-4afd-bd1d-5ab065257963}</Project>
+      <Name>HappyTrip.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411070532069_n.resx">
+      <DependentUpon>201411070532069_n.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411261316084_e.resx">
+      <DependentUpon>201411261316084_e.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411271453026_f.resx">
+      <DependentUpon>201411271453026_f.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

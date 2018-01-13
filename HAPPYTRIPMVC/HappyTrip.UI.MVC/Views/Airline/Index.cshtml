@@ -1,0 +1,54 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<HappyTrip.Models.Airline>
+
+@{
+    ViewBag.Title = "Airline";
+}
+
+
+
+<br />
+<br />
+<div class="CSSTableGenerator">
+<table>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.First().AirlineName)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().Code)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.First().Logo)
+        </td>
+        <td></td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AirlineName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            <img src="@item.Logo" alt="@item.AirlineName" height="60px" width="100px" />
+            @*@Html.DisplayFor(modelItem => item.Logo)*@
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AirlineId }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.AirlineId }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.AirlineId })
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+
+<div class=" pages">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "Airline", new { page }))
+</div>

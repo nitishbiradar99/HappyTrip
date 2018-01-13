@@ -1,0 +1,48 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+
+@model IPagedList<HappyTrip.Models.City>
+
+@{
+    ViewBag.Title = "City";
+}
+
+
+<br />
+<br />
+<div class="CSSTableGenerator">
+<table>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.First().CityName)
+        </td>
+        <td>
+
+            State Name
+            @*@Html.DisplayNameFor(model => model.StateId)*@
+        </td>
+        <td></td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State.StateName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CityId }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.CityId }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.CityId })
+        </td>
+    </tr>
+}
+
+</table>
+    </div>
+
+<div class=" pages">
+    @Html.PagedListPager(Model, page => Url.Action("Index", "City", new { page }))
+</div>

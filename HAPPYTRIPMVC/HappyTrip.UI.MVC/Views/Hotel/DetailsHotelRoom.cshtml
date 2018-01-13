@@ -1,0 +1,49 @@
+﻿@model HappyTrip.Models.HotelRoom
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details Of HotelRoom</h2>
+
+<fieldset>
+    <legend></legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RoomType.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoomType.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Hotel.HotelName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Hotel.HotelName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CostPerDay)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CostPerDay)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NoOfRooms)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NoOfRooms)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Photo)
+    </div>
+    <div class="display-field">
+         @Html.Raw("<img width=\"150\" height=\"150\" src=\"data:image/jpeg;base64,"+ Convert.ToBase64String(Model.Photo)+"\"/>")
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "EditHotelRoom", new { id=Model.HotelRoomId }) |
+    @Html.ActionLink("Back to List", "GetListOfHotelRooms")
+</p>

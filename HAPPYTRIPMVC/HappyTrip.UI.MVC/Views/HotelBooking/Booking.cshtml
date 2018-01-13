@@ -1,0 +1,208 @@
+﻿@model HappyTrip.Models.HotelRoom
+
+@{
+    ViewBag.Title = "Booking";
+    HappyTrip.Models.SearchInfo search = ViewBag.SearchInfo;
+}
+<style type="text/css">
+    .img
+    {
+        margin-top:10px;
+        float:left;
+        max-width:200px;
+        margin-right:10px;
+        margin-left:5px;
+        margin-bottom:10px;
+        border-radius:10px;
+        box-shadow:4px 4px 4px;
+    }
+    .check
+    {
+        float:right;
+        width:200px;
+        height:200px;
+        text-align:center;
+        margin-right:120px;
+        margin-top:40px;
+    }
+    .booking
+    {
+        width:100%;
+    }
+    #booking
+    {
+        background-color:rgba(234, 228, 228, 0.58);
+        box-shadow:5px 5px 5px rgba(230, 230, 237, 0.84);
+        border-radius:5px;
+    }
+    .address
+    {
+        margin-top:20px;
+        float:left;
+        margin-bottom:10px;
+        width:400px;
+        height:200px;
+    }
+    .main
+    {
+        width:100%;
+        /*background-color:#d9cece;*/
+    }
+    .submain
+    {
+        box-shadow:4px 8px 10px;
+         background-color:#00ff21;
+    }
+    .subbutton
+    {
+        margin-top:20px;
+        margin-left:100px;
+        border-radius:4px;
+    }
+    #guest, #register
+    {
+            background-color: cornsilk;
+            height:50px;
+            border-radius: 4px;
+            margin-right: 100px;
+            text-align: -webkit-center;
+            width:150px;
+            box-shadow:5px 5px 5px #808080;
+    }
+    #space
+    {
+        padding-right:20px;
+        padding-bottom:4px;
+        text-align:center;
+    }
+</style>
+<div id="errordiv">
+
+</div>
+<div class="main">
+<section class="submain">
+    <div class="img">
+            @Html.Raw("<img width=\"200\" height=\"200\" src=\"data:image/jpeg;base64,"+ Convert.ToBase64String(Model.Hotel.Photo)+"\"/>")
+        </div>
+        <div class="address">    
+           <b> @Model.Hotel.HotelName </b> <br />
+            @Model.Hotel.BriefNote<br />
+            @Model.Hotel.Address<br />
+            @Model.Hotel.City.CityName<br />
+    </div>
+    <div class="check">
+    <aside>
+        <table>
+            <tr>
+                <td>
+                    Check In
+                </td>
+                <td>
+                    <input type="text" name="" value="@search.CheckInDate" disabled="disabled" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Check Out
+                </td>
+                <td>
+                    <input type="text" name="" value="@search.CheckOutDate" disabled="disabled" />
+                </td>
+            </tr>
+        </table>
+    </aside>
+</div>
+    </section>
+    <section class="booking">
+        <table id="booking">
+            <tr>
+                <th id="space">
+                    ROOM
+                </th>
+                <th id="space">
+                    GUEST
+                </th>
+                <th id="space">
+                    PRICEPERNIGHT
+                </th>
+                <th id="space">
+                    NIGHT(S)
+                </th>
+                <th id="space">
+                    TotalPrice
+                </th>
+            </tr>
+            <tr>
+                <td id="space">
+                    @search.NoOfRooms
+                </td>
+                <td id="space">
+                    @search.NoOfPeople
+                </td>
+                <td id="space">
+                    @Model.CostPerDay
+                </td>
+                <td id="space">
+                    @search.NoOfNight
+                </td>
+                <td id="space">
+                    @ViewBag.TotalCost
+                </td>
+            </tr>
+        </table>
+    </section>
+<div>
+    <section class="subbutton">
+        <table>
+            <tr>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td>
+                        <input type="button" id="userlogin" value="Continues" />
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <input type="button" id="guest" value="Continues As Guest" />
+                    </td>
+                    <td>
+                        <input type="button" id="register" value="Register" />
+                    </td>
+                }
+                
+            </tr>
+        </table>
+    </section>
+</div>
+</div>
+
+<div id="guesttable">
+</div>
+
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#errordiv").fadeOut(0);
+        $("#guesttable").fadeOut(0);
+        $("#guest").click(function () {
+            $(".main").fadeOut(0);
+            $("#guesttable").fadeIn();
+            GetEnterDetailsPage();
+        });
+    });
+    function GetEnterDetailsPage() {
+        $.ajax({
+            url: "/HotelBooking/EnterDetails",
+            type: 'Get',
+            //data: { fromcity: fromcityid, tocity: tocityid, fromDate: fromdate, noofPeople: noofpeople, travelClass: travelclass },
+            success: function (data) {
+                $("#guesttable").empty().append(data);
+            },
+            error: function () {
+                $("#errordiv").fadeIn(0);
+                //alert("hi");
+            }
+        });
+    }
+</script>

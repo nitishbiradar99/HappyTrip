@@ -1,0 +1,67 @@
+﻿@model IEnumerable<HappyTrip.Models.Schedule>
+
+@{
+    ViewBag.Title = "FindFlight";
+}
+
+<h2>FindFlight</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="CSSTableGenerator">
+<table>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.FlightID)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.RouteId)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.DepartureTime)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.ArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.DurationInMins)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </td>
+        <td></td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlightID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RouteId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DurationInMins)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ScheduleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ScheduleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ScheduleID })
+        </td>
+    </tr>
+}
+
+</table>
+
+    </div>

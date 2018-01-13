@@ -1,0 +1,68 @@
+﻿@model HappyTrip.Models.Flight
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Add New Flight</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AirlineId)
+        </div>
+        <div class="editor-field">
+            
+            @Html.DropDownList("AirlineId", "--Select Airline--");
+            @*@Html.EditorFor(model => model.AirlineId)*@
+            @Html.ValidationMessageFor(model => model.AirlineId)
+        </div>
+        
+        <table style="text-align:center">
+            <tr>
+                <td>  Class </td>
+                <td> Seat </td>
+            </tr>
+
+            @foreach (HappyTrip.Models.TravelClass a in ViewBag.TravelClass)
+            {
+                <tr>
+                    <td>
+                        @a.TravelClassName
+                    </td>
+                    <td>
+                       @* @Html.EditorFor(yb => a.TravelClassId)*@
+                       : <input type="number" min="0" name="@a.TravelClassId" />
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <br />
+        <br />
+
+        <p>
+            <input type="submit" value="Create" class="button-secondary"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

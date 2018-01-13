@@ -1,0 +1,37 @@
+﻿@model HappyTrip.Models.State
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>State</legend>
+
+        @Html.HiddenFor(model => model.StateId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StateName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StateName)
+            @Html.ValidationMessageFor(model => model.StateName)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" class="button-secondary"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

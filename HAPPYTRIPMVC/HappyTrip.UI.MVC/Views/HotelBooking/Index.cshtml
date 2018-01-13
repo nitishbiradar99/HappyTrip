@@ -1,0 +1,97 @@
+﻿@model HappyTrip.Models.SearchInfo
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/jquery-ui-1.8.19.custom.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.10.4.custom.js"></script>
+<h2>Search For A Hotel</h2>
+@*<h2>Index</h2>*@
+<br />
+@using (Html.BeginForm("SearchResult", "HotelBooking", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <table class="tab">
+        <tr>
+            <td style="color:black; text-align:center">
+                @Html.LabelFor(model => model.Hotels.City.CityId, "Desitination City :")
+            </td>
+            <td>
+                @*<select name="CityId"  >
+                    @foreach (var item in ViewBag.CityId)
+                    {
+                        <option name="@item.CityId" value="CityName"></option>
+                    }
+                </select>*@
+                @Html.DropDownList("CityId", "......Select City Name......")
+                @Html.ValidationMessageFor(model => model.Hotels.City)
+            </td>
+        </tr>
+        <tr>
+           <h6 style="color:red">@TempData["DateerrorMessage"]</h6>
+            <td class="check">
+                @Html.LabelFor(model => model.CheckInDate, "CheckIn :")
+                <input type="text" name="CheckInDate" id="CheckInDate" />
+                @Html.ValidationMessageFor(model => model.CheckInDate)
+            </td>
+            <td class="check">
+                @Html.LabelFor(model => model.CheckOutDate, "CheckOut :")
+                <input type="text" name="CheckOutDate" id="CheckOutDate"/>
+                @Html.ValidationMessageFor(model => model.CheckOutDate)
+            </td>
+        </tr>
+        <tr>
+            <td style="color:black; text-align:center">
+                @Html.LabelFor(model => model.NoOfPeople,"Peoples :")
+                @Html.DropDownList("NoOfPeople")
+                @Html.ValidationMessageFor(model => model.NoOfPeople)
+            </td>
+            <td style="color:black; text-align:center">
+                @Html.LabelFor(model => model.NoOfRooms,"Rooms :")
+                @Html.DropDownList("NoOfRooms")
+                @Html.ValidationMessageFor(model => model.NoOfRooms)
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center">
+                <input type="submit" id="btndrop" value="Search Hotel" class="search" />
+            </td>
+        </tr>
+    </table>
+    <div>
+        <h6>* One room consist of only 2 people</h6>
+        <h6>* Extra person will be charge Rs.1000 per night</h6>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btndrop').on('click', function (e) {
+            var iVal = $('#ddlList').val();
+            if (iVal == 0) {
+                alert('Please select any technology.');
+                e.preventDefault();
+            }
+            else
+                alert('Well Done!!!!');
+        })
+    });
+    $('#CheckInDate').datepicker({
+        minDate: 0,
+        maxDate: "+3M",
+        numberOfMonths: 1,
+        OnSelect: function (selected) {
+            $('#CheckOutDate').datepicker("option", "minDate", selected)
+        }
+    });
+
+    $('#CheckOutDate').datepicker({
+        minDate: 0,
+        maxDate: "+90D",
+        numberOfMonths: 1,
+        OnSelect: function (selected) {
+            $('#CheckInDate').datepicker("option", "maxDate", selected)
+        }
+    });
+</script>

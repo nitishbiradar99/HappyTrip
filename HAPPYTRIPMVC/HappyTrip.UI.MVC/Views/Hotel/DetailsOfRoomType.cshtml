@@ -1,0 +1,43 @@
+﻿@model HappyTrip.Models.RoomType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>RoomType</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Code)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Code)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IsActive)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IsActive)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "EditRoomType", new { id=Model.TypeId }) |
+    @Html.ActionLink("Back to List", "GetListOfRoomType")
+</p>

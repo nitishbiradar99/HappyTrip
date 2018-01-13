@@ -1,0 +1,118 @@
+﻿@model HappyTrip.Models.SpecialSchedule
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SpecialSchedule</legend>
+
+      @*  <div class="editor-label">
+            @Html.Label("From Cit")
+        </div>
+        <div class="editor-field">
+        
+            @Html.ValidationMessageFor(model => model.SpecialFlightId)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.Label("From City")
+        </div>
+        <div class="editor-field">
+              @Html.DropDownList("FromCityId","..Select City..")
+            @Html.ValidationMessageFor(model => model.FromCityId)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("To City")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ToCityId","..Select City..")
+            @Html.ValidationMessageFor(model => model.ToCityId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EcoCost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EcoCost)
+            @Html.ValidationMessageFor(model => model.EcoCost)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BusinessCost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BusinessCost)
+            @Html.ValidationMessageFor(model => model.BusinessCost)
+        </div>
+       
+         <div class="editor-label">
+            @Html.Label("Departure Time")
+        </div>
+
+         <div class="editor-field">
+             <input type="time" name="DepartureTime"  />
+        </div>
+
+      <div class="editor-label">
+            @Html.Label("Arrival Time")
+        </div>
+
+         <div class="editor-field">
+             <input type="time" name="ArrivalTime"  />
+        </div>
+
+         <div class="editor-label">
+            @Html.Label("Duration")
+        </div>
+
+         <div class="editor-field">
+             <input type="Text" name="DurationInMins"  />
+        </div>
+
+
+          <div class="editor-label">
+            @Html.Label("Airline")
+        </div>
+        <div class="editor-field">
+         @Html.DropDownList("Airline","..Select Airline..")
+        
+        </div>
+
+         <div class="editor-label">
+            @Html.Label("Select Flight")
+        </div>
+        <div class="editor-field">
+         @Html.DropDownList("FlightId","..Select Flight..")
+          
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsActive)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsActive)
+            @Html.ValidationMessageFor(model => model.IsActive)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

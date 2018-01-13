@@ -1,0 +1,56 @@
+﻿@model HappyTrip.Models.HotelBooking
+
+@{
+    ViewBag.Title = "Contact Information";
+}
+
+<h2>EnterDetails</h2>
+
+@using (Html.BeginForm("BookedDetails", "HotelBooking", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <table>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HotelBookingContacts.ContactName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(model => model.HotelBookingContacts.ContactName)
+                @Html.ValidationMessageFor(model => model.HotelBookingContacts.ContactName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HotelBookingContacts.EmailID)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(model => model.HotelBookingContacts.EmailID)
+                @Html.ValidationMessageFor(model => model.HotelBookingContacts.EmailID)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.HotelBookingContacts.PhoneNo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.EditorFor(model => model.HotelBookingContacts.PhoneNo)
+                @Html.ValidationMessageFor(model => model.HotelBookingContacts.PhoneNo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                  <input type="submit", name="" value="Continue To Payment" />
+            </td>
+        </tr>
+    </table>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

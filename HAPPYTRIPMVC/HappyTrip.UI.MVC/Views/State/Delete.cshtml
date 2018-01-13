@@ -1,0 +1,25 @@
+﻿@model HappyTrip.Models.State
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>State</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StateName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StateName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" class="button-secondary"/> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

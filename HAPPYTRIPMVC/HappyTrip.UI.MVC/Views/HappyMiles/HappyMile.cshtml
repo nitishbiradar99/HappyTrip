@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "HappyMile";
+}
+
+<h2>HappyMile</h2>
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<table>
+    <tr><td>
+@Ajax.ActionLink("Search By Name","Search",new AjaxOptions
+{
+    HttpMethod="GET",
+    UpdateTargetId="divName",
+    InsertionMode=InsertionMode.Replace})
+
+        </td><td>
+@Ajax.ActionLink("Search By ID","SearchByID",new AjaxOptions
+{
+    HttpMethod="GET",
+    UpdateTargetId="divName",
+    InsertionMode=InsertionMode.Replace})
+
+       </td><td><input type="button" id="close" value="Close Dialogue"/></td> </tr>
+
+    </table>
+
+<div id="divName"></div>
+<div id="close"></div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        if ($("divName").ajaxComplete())
+            $('#close').show().clearQueue();
+        else
+            $('#close').hide();
+
+
+
+
+
+
+        $('#close').click(function () {
+
+            $('#divName').slideToggle().clearQueue();
+
+            if($('#close').attr('value')=='Close Dialogue')
+                $('#close').attr('value', 'show dialogue');
+            else
+                $('#close').attr('value', 'Close Dialogue');
+
+        });
+        
+
+
+    });
+
+    
+
+</script>

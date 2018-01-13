@@ -1,0 +1,83 @@
+﻿@model HappyTrip.Models.Hotel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Hotel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HotelName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HotelName)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Photo)
+    </div>
+    <div class="display-field">
+         @Html.Raw("<img width=\"150\" height=\"150\" src=\"data:image/jpeg;base64,"+ Convert.ToBase64String(Model.Photo)+"\"/>")
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BriefNote)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BriefNote)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StarRanking)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StarRanking)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.City.CityName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.City.CityName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pincode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pincode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ContactNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ContactNo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WebsiteURL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WebsiteURL)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "EditHotel", new { id=Model.HotelId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,194 @@
+﻿@model IEnumerable<HappyTrip.Models.Schedule>
+
+@{
+    ViewBag.Title = "Return Flights";
+}
+
+@using (Html.BeginForm("BookFlight", "Home", FormMethod.Post))
+{
+    <h4>List of Flights</h4>
+
+    <div class="CSSTableGenerator">
+        <table>
+            <tr>
+
+                <td>
+                    @Html.DisplayName("Flight Name")
+                </td>
+
+                <td>
+                    @Html.DisplayName("Airline")
+                </td>
+
+                <td>
+                    @Html.DisplayName("From")
+                </td>
+
+                <td>
+                    @Html.DisplayName("To")
+                </td>
+
+                <td>
+                    @Html.DisplayNameFor(model => model.DepartureTime)
+                </td>
+
+                <td>
+                    @Html.DisplayNameFor(model => model.ArrivalTime)
+                </td>
+
+                <td>
+                    @Html.DisplayNameFor(model => model.DurationInMins)
+                </td>
+
+                <td>
+                    @Html.DisplayName("Cost Per Ticket")
+                </td>
+
+                <td>
+            
+                </td>
+       
+            </tr>
+
+
+        @foreach (var item in Model) 
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flight.Name)
+                </td>
+
+                <td> 
+                    <img src="~/@item.Flight.Airline.Logo" alt="@item.Flight.Airline.AirlineName" height="60px" width="100px" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Route.FromCity.CityName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Route.ToCity.CityName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartureTime)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArrivalTime)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DurationInMins)
+                </td>
+
+                <td>
+                    @foreach (var x in item.flightCosts)
+                    {
+                        <p>@Html.DisplayFor(a => x.TravelClass.TravelClassName) : @Html.DisplayFor(a => x.CostPerTicket)</p>
+                
+                    }
+                </td>
+
+                <td>
+                    <input type="radio" name="fromFlightId" value=@item.FlightID /> Book Flight
+                </td>
+       
+            </tr>
+        }
+        </table>
+    </div>
+
+    <br />
+    <br />
+    <h4>Return Flights</h4>
+    <div class="CSSTableGenerator">
+        <table>
+            <tr>
+                <td>
+                    @Html.DisplayName("Flight Name")
+                </td>
+
+                <td>
+                    @Html.DisplayName("Airline")
+                </td>
+                <td>
+                    @Html.DisplayName("From")
+                </td>
+
+                <td>
+                    @Html.DisplayName("To")
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.DepartureTime)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.ArrivalTime)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.DurationInMins)
+                </td>
+                <td>
+                    @Html.DisplayName("Cost Per Ticket")
+                </td>
+                <td>
+            
+                </td>
+       
+            </tr>
+            @foreach (HappyTrip.Models.Schedule item in ViewBag.ReturnSchedule) 
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Flight.Name)
+                    </td>
+
+                    <td> 
+                        <img src="~/@item.Flight.Airline.Logo" alt="@item.Flight.Airline.AirlineName" height="60px" width="100px" />
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Route.FromCity.CityName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Route.ToCity.CityName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartureTime)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArrivalTime)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DurationInMins)
+                    </td>
+
+                    <td>
+                        @foreach (var x in item.flightCosts)
+                        {
+                            <p>@Html.DisplayFor(a => x.TravelClass.TravelClassName) : @Html.DisplayFor(a => x.CostPerTicket)</p>
+                
+                        }
+                    </td>
+
+                    <td>
+                        <input type="radio" name="ToFlightId" value=@item.FlightID /> Select Flight
+                    </td>
+       
+                </tr>
+            }
+
+        </table>
+        <br />
+        <br />
+        <p>
+            <input type ="submit" name="submit" value="Book Flight" class="button-secondary" />
+        </p>
+    </div>
+}

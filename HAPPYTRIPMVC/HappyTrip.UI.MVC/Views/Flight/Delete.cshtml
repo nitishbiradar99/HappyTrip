@@ -1,0 +1,58 @@
+﻿@model HappyTrip.Models.Flight
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<br />
+<br />
+
+<fieldset>
+    <legend>Are you sure you want to delete this?</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name) : @Html.DisplayFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            <br />
+          <b>  Airline </b> : <img src="~/@Model.Airline.Logo" alt="@Model.Airline.AirlineName" height="40px" width="100px" />
+        </div>
+        <br />
+        <br />
+        <table style="text-align:center">
+            <tr>
+                <td>  Class </td>
+                <td> Seat </td>
+            </tr>
+            
+             @foreach (HappyTrip.Models.TravelClass a in ViewBag.TravelClass)
+            {
+                <tr>
+                    <td>
+                        @a.TravelClassName
+                    </td>
+                    <td>
+                        @foreach (HappyTrip.Models.FlightClass b in ViewBag.FlightClass)
+	                    {
+                            if(Model.FlightID == b.FlightId &&a.TravelClassId==b.TravelClassId)
+                            {
+		                        <text>: @Html.DisplayFor(v => @b.NoOfSeats)</text>
+                            }
+                        }
+                       
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </fieldset>
+<br />
+<br />
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" class="button-secondary"/> |
+        @Html.ActionLink("Cancle", "Index")
+    </p>
+}

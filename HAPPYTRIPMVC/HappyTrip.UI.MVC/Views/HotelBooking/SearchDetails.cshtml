@@ -1,0 +1,98 @@
+﻿@model IEnumerable<HappyTrip.Models.HotelRoom>
+
+@{
+    ViewBag.Title = "SearchDetails";
+    HappyTrip.Models.SearchInfo search = ViewBag.SearchInfo;
+}
+<style type="text/css">
+    .searchmenu
+    {
+        background-color:#dfdaeb;
+        box-shadow:5px 5px 5px;
+        border-radius:5px;
+        text-align:center;
+        width:100%;
+    }
+    #txt
+    {
+        border-radius:5px;
+        box-shadow:5px 5px 5px #808080;
+    }
+    .cc
+    {
+        background-color:#dfdaeb;
+        box-shadow:5px 5px 5px;
+        border-radius:5px;
+        width:100%;
+    }
+</style>
+<table class="searchmenu">
+        <tr>
+            <td style="text-align:center">
+               Destination City : <input type="text" name="DesitinationCity" value="@search.Hotels.City.CityName" id="txt" disabled="disabled" />
+            </td>
+            <td style="text-align:center">
+               CheckIn: <input type="text" name="CheckInDate" value="@search.CheckInDate" id="txt" disabled="disabled" />
+            </td>
+            <td style="text-align:center">
+               CheckOut: <input type="text" name="CheckOutDate" value="@search.CheckOutDate" id="txt" disabled="disabled" />
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center">
+               No Of People: <input type="text" name="NoOfPeople" value="@search.NoOfPeople" id="txt" disabled="disabled"/>
+            </td>
+            <td style="text-align:center">
+               No Of Rooms: <input type="text" name="NoOfRooms" value="@search.NoOfRooms" id="txt" disabled="disabled"/>
+            </td>
+            <td style="text-align:center">
+                TotalNight: <input type="text" name="" value="@search.NoOfNight" id="txt" disabled="disabled" />
+            </td>
+        </tr>
+    </table>
+<br />
+<table class="cc">        
+    @foreach (var item in Model)
+    {
+        <tr>
+           <b> @item.Hotel.HotelName </b>      
+        </tr>
+     <tr>
+        <td colspan="6">
+          
+            @Html.Raw("<img width=\"400\" height=\"200\" src=\"data:image/jpeg;base64,"+ Convert.ToBase64String(item.Hotel.Photo)+"\"/>")
+             <hr />
+            <hr />
+        </td>
+        <td>
+            <h4> Description</h4> <br />
+            @item.Hotel.BriefNote <br />
+            <h4> Location </h4> <br />
+            @item.Hotel.Address
+            @{break;}
+          
+        </td>
+         <td>
+         </td>
+     </tr>
+    }
+    
+   
+@foreach (var item in Model) {
+    
+     <tr>
+         <td >         
+            @Html.Raw("<img width=\"150\" height=\"150\" src=\"data:image/jpeg;base64,"+ Convert.ToBase64String(item.Photo)+"\"/>")
+        </td>
+        <td>
+           <b> @item.RoomType.Title</b> <br />
+            @item.RoomType.Description
+        </td>
+        <td>
+            Rs. @item.CostPerDay<br />
+            @Html.ActionLink("Book Now", "Booking", new { id=item.HotelRoomId })
+           
+        </td>
+    </tr>
+}
+</table>

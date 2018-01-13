@@ -1,0 +1,53 @@
+﻿@model IEnumerable<HappyTrip.Models.RoomType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<div class="CSSTableGenerator">
+<table>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model.Title)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Description)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Code)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </td>
+        <td></td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditRoomType", new { id=item.TypeId }) |
+            @*@Html.ActionLink("Details", "DetailsOfRoomType", new { id=item.TypeId })*@ 
+            @Html.ActionLink("Delete", "DeleteRoomType", new { id=item.TypeId }, new { onclick = "return confirm('Are you sure you wish to delete this question?');"})
+        </td>
+    </tr>
+}
+
+</table>
+</div>

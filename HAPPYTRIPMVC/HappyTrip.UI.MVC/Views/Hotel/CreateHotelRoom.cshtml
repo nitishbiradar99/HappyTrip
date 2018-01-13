@@ -1,0 +1,64 @@
+﻿@model HappyTrip.Models.HotelRoom
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add Room To Hotel</h2>
+
+@using (Html.BeginForm("CreateHotelRoom", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TypeId, "RoomType")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TypeId", "........Select Room Type........")
+            @Html.ValidationMessageFor(model => model.TypeId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HotelId, "HotelRoom")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("HotelId",".........Select Hotel..........")
+            @Html.ValidationMessageFor(model => model.HotelId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CostPerDay)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CostPerDay)
+            @Html.ValidationMessageFor(model => model.CostPerDay)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NoOfRooms)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NoOfRooms)
+            @Html.ValidationMessageFor(model => model.NoOfRooms)
+        </div>
+         <div class="editor-label">
+            @Html.LabelFor(model => model.Photo)
+        </div>
+        <div class="editor-field">
+             <input type="file" name="file" />
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,141 @@
+﻿@model HappyTrip.Models.HotelBooking
+
+@{
+    ViewBag.Title = "BookedDetails";
+}
+<style type="text/css">
+    .bp
+    {
+        background-color:black;
+        text-align:center;
+        color:white;
+        height:20px;
+        width:100px;
+    }
+</style>
+<h2>Booked Details</h2>
+<table>
+    <tr>
+        <td>
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.BookingContactId)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.BookingContactId)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="display-label">
+                  @Html.DisplayNameFor(model => model.HotelBookingContacts.ContactName)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.HotelBookingContacts.ContactName)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.SearchInfos.Hotels.HotelName)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.SearchInfos.Hotels.HotelName)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.SearchInfos.Hotels.City.CityName)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.SearchInfos.Hotels.City.CityName)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.SearchInfos.CheckInDate)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.SearchInfos.CheckInDate)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.SearchInfos.CheckOutDate)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.SearchInfos.CheckOutDate)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.SearchInfos.NoOfRooms)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.SearchInfos.NoOfRooms)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.SearchInfos.NoOfNight)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.SearchInfos.NoOfNight)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.BookingDate)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.BookingDate)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="display-label">
+                 @Html.DisplayNameFor(model => model.TotalCost)
+            </div>
+        </td>
+        <td>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.TotalCost)
+            </div>
+        </td>
+    </tr>
+</table>
+<p class="bp">
+    @Html.ActionLink("Home", "Index", "HotelBooking")
+</p>

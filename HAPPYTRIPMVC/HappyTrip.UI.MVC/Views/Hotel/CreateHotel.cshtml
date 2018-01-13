@@ -1,0 +1,188 @@
+﻿@model HappyTrip.Models.Hotel
+
+@{
+    ViewBag.Title = "Add Hotel";
+}
+<style type="text/css">
+    table
+    {
+        background:content-box #efe6ea;
+    }
+    th
+    {
+        width:200px;
+    }
+    </style>
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/PhoneValidation.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var NHptel = $('Namehtl').val();
+        var Pincode = $('txtPin').val().length;
+        if (Pincode == 6) {
+            alert("Weldone");
+        }
+        else {
+            alert("Wroung Pincode");
+        }
+    });
+</script>
+
+<h2>Add Hotel</h2>
+@TempData["Error"];
+@using (Html.BeginForm("CreateHotel", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <centre>
+    <table>
+        <tr>
+            <th>
+                 <div class="editor-label">
+                    @Html.LabelFor(model => model.HotelName)
+                </div>
+            </th>
+            <td>
+                  <div class="editor-field">
+                     @Html.EditorFor(model => model.HotelName, new { id="Namehtl" })
+                     @Html.ValidationMessageFor(model => model.HotelName)
+                  </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                  <div class="editor-label">
+                      @Html.LabelFor(model => model.Photo)
+                 </div>
+            </th>
+            <td>
+                <div class="editor-field">
+                    @*@Html.EditorFor(model => model.PhotoUrl)
+                    @Html.ValidationMessageFor(model => model.PhotoUrl)*@
+                    <input type="file" name="file" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.BriefNote)
+                </div>
+            </th>
+            <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.BriefNote)
+                    @Html.ValidationMessageFor(model => model.BriefNote)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.StarRanking)
+                </div>
+            </th>
+            <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.StarRanking)
+                    @Html.ValidationMessageFor(model => model.StarRanking)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Address)
+                </div>
+            </th>
+            <td>
+                 <div class="editor-field">
+                    @Html.EditorFor(model => model.Address)
+                    @Html.ValidationMessageFor(model => model.Address)
+                 </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <div class="editor-label">
+                     @Html.LabelFor(model => model.City)
+                </div>
+            </th>
+            <td>
+                 <div class="editor-field">
+                     @*@Html.EditorFor(model => model.City)
+                     @Html.ValidationMessageFor(model => model.City)*@
+                     @Html.DropDownList("CityID", "..........Select City...........")
+                     @Html.ValidationMessageFor(model => model.City)
+                 </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Pincode)
+                </div>
+            </th>
+            <td>
+                <div class="editor-field">
+                    @*@Html.EditorFor(model => model.Pincode)*@
+                    <input type="text" id="txtPin" name="Pincode" maxlength="6"/>
+                    @Html.ValidationMessageFor(model => model.Pincode)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ContactNo)
+                </div>
+            </th>
+            <td>
+                <div class="editor-field">
+                    @*@Html.EditorFor(model => model.ContactNo, new {@id ="txtNumbers"})*@
+                    <input type="text" id="txtContact" name="ContactNo"  maxlength="10" />
+                    @Html.ValidationMessageFor(model => model.ContactNo)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Email)
+                </div>
+            </th>
+            <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.WebsiteURL)
+                </div>
+            </th>
+            <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.WebsiteURL)
+                    @Html.ValidationMessageFor(model => model.WebsiteURL)
+                </div>
+            </td>
+        </tr>
+    </table>
+ </centre> 
+            <p>
+            <input type="submit" value="Create" />
+        </p>
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
